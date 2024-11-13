@@ -1,4 +1,4 @@
-package com.techprimers.testing;
+package com.cognizant.testing;
 
 import org.junit.jupiter.api.*;
 
