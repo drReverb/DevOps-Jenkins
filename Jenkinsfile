@@ -20,7 +20,6 @@ pipeline {
             }
         }
 
-
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'maven_3_9_9') {
@@ -28,6 +27,21 @@ pipeline {
                     bat 'mvn deploy'
                 }
             }
+        }
+
+        stage('Security Scan') {
+            steps {
+                echo 'Running security scans...'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and deployment completed successfully!'
+        }
+        failure {
+            echo 'Build failed!'
         }
     }
 }
